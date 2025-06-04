@@ -139,32 +139,26 @@
                 }
             });
         });
-        // Au chargement du DOM
         document.addEventListener("DOMContentLoaded", function () {
-        // Cibler tous les liens du menu déroulant
          const projectLinks = document.querySelectorAll('.dropdown-content a');
 
     projectLinks.forEach(link => {
       link.addEventListener('click', function (e) {
-        // Attendre que le scroll soit terminé (petit délai)
         setTimeout(() => {
           const targetId = this.getAttribute('href').substring(1); // ex: "projet1"
           const targetSection = document.getElementById(targetId);
 
           if (targetSection) {
-            // Ferme les autres détails
             document.querySelectorAll('.detail').forEach(detail => {
               detail.style.display = 'none';
             });
-
-            // Ouvre les détails du projet ciblé
             const detailDiv = targetSection.querySelector('.detail');
             if (detailDiv) {
               detailDiv.style.display = 'flex';
               detailDiv.style.flexDirection = 'column';
             }
           }
-        }, 300); // Attendre 300ms pour laisser le scroll finir
+        }, 300); 
       });
     });
   });
