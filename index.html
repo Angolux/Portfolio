@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+    <title>Portfolio/AC</title>
 </head>
 <body>
     <header>
@@ -45,10 +45,10 @@
         <section class="bas" id="comp">
             <h1 >Compétences</h1>
             <ul>
-                <li><strong>HTML</strong></li>
-                <li><strong>CSS</strong></li>
+                <li><strong>HTML/CSS</strong></li>
+                <li><strong>C#</strong></li>
                 <li><strong>Javascript</strong></li>
-                <li><strong>SQl</strong></li>
+                <li><strong>SQL</strong></li>
                 <li><strong>Java</strong></li>
                 <li><strong>Python</strong></li>
             </ul>
@@ -59,8 +59,8 @@
                 <h2 >Odomo <img class="toggle-detail" src="./img/image.png" alt="" title="Cliquez pour afficher les détails"></h2>
                 <div class="detail">
                     <p><strong>Cahier des charges :</strong> Coder les fonctionnalités d'une station météo pour pouvoir afficher  la météo, la pluviométrie et un système de chauffage</p>
-                    <p><strong>Technologies utilisés :</strong> l'IDE Netbeans et la language Java</p>
-                    <p><strong>Méthode de réflexion :</strong> Analyse et comprehension du code initial pour ainsi implémenter les focntionnalités de la meilleure des manières possible</p>
+                    <p><strong>Technologies utilisées :</strong> l'IDE Netbeans et la language Java</p>
+                    <p><strong>Méthode de réflexion :</strong> Analyse et comprehension du code initial pour ainsi implémenter les fonctionnalités de la meilleure des manières possible</p>
                     <p><strong>Compétences dévelopées :</strong> Coder en Java, manipuler des structures de données simple, réaliser et modifier des affichages en ASCII</p>
                     <p><strong>Rendu Graphique :</strong> </p>
                     <div class="rendu">
@@ -139,6 +139,35 @@
                 }
             });
         });
+        // Au chargement du DOM
+        document.addEventListener("DOMContentLoaded", function () {
+        // Cibler tous les liens du menu déroulant
+         const projectLinks = document.querySelectorAll('.dropdown-content a');
+
+    projectLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        // Attendre que le scroll soit terminé (petit délai)
+        setTimeout(() => {
+          const targetId = this.getAttribute('href').substring(1); // ex: "projet1"
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            // Ferme les autres détails
+            document.querySelectorAll('.detail').forEach(detail => {
+              detail.style.display = 'none';
+            });
+
+            // Ouvre les détails du projet ciblé
+            const detailDiv = targetSection.querySelector('.detail');
+            if (detailDiv) {
+              detailDiv.style.display = 'flex';
+              detailDiv.style.flexDirection = 'column';
+            }
+          }
+        }, 300); // Attendre 300ms pour laisser le scroll finir
+      });
+    });
+  });
     </script>
 </body>
 </html>
